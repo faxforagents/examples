@@ -26,10 +26,17 @@ const { values: args } = parseArgs({
 
 const ffa = new FaxForAgents();
 
+/** Files that go through the upload path. The SDK reads the content type from the name. */
+const UPLOAD_SUFFIXES = ['.pdf', '.png', '.jpg', '.jpeg', '.tif', '.tiff'];
+
 async function prepare() {
   if (args.file) {
-    if (args.file.toLowerCase().endsWith('.pdf')) {
+    const name = args.file.toLowerCase();
+    if (UPLOAD_SUFFIXES.some((suffix) => name.endsWith(suffix))) {
       return ffa.documents.upload(new Uint8Array(readFileSync(args.file)), { filename: args.file });
+    }
+    if (name.endsWith('.html') || name.endsWith('.htm')) {
+      return ffa.documents.create({ html: readFileSync(args.file, 'utf8'), filename: args.file });
     }
     return ffa.documents.create({ text: readFileSync(args.file, 'utf8'), filename: args.file });
   }

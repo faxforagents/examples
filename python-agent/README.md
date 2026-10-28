@@ -3,14 +3,14 @@
 An agent loop that faxes a document on the sandbox with the [Python SDK](https://github.com/faxforagents/sdk-python).
 
 ```bash
-pip install faxforagents
+pip install faxforagents                        # until it is on PyPI: pip install "faxforagents @ git+https://github.com/faxforagents/sdk-python@main"
 export FAXFORAGENTS_API_KEY=ffa_test_...        # created at https://app.faxforagents.com
 python agent.py --to +15550000001 --text "Hello from an agent."
 ```
 
 What it does, in order.
 
-1. `documents.create` (or `documents.upload` for a PDF) turns the input into an immutable document
+1. `documents.create` (or `documents.upload` for a PDF or an image: PNG, JPG, TIFF) turns the input into an immutable document
    with a sha256 and a page count.
 2. `quotes.create` prices that document to that destination. The quote lives ten minutes.
 3. When the quote says `authorization_required`, `policies.evaluate` is the dry run. If no policy

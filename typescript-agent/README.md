@@ -8,11 +8,12 @@ export FAXFORAGENTS_API_KEY=ffa_test_...        # created at https://app.faxfora
 npx tsx agent.ts --to +15550000001 --text "Hello from an agent."
 ```
 
-Until `faxforagents` is on npm, point the dependency at a checkout: `npm install ../../sdk-typescript`.
+Until `faxforagents` is on npm, `package.json` points the dependency at the GitHub repository, which
+builds the client on install. Once the package is published, `npm install faxforagents` replaces it.
 
 What it does, in order.
 
-1. `documents.create` (or `documents.upload` for a PDF) turns the input into an immutable document
+1. `documents.create` (or `documents.upload` for a PDF or an image: PNG, JPG, TIFF) turns the input into an immutable document
    with a sha256 and a page count.
 2. `quotes.create` prices that document to that destination. The quote lives ten minutes.
 3. When the quote says `authorization_required`, `policies.evaluate` is the dry run. If no policy

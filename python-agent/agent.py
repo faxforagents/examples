@@ -27,10 +27,17 @@ from faxforagents import APIError, Client
 TERMINAL = {"delivered", "partial", "failed", "unknown"}
 
 
+#: Files that go through the upload path. The SDK reads the content type from the name.
+UPLOAD_SUFFIXES = {".pdf", ".png", ".jpg", ".jpeg", ".tif", ".tiff"}
+
+
 def prepare(ffa: Client, text: str | None, file: Path | None):
     if file is not None:
-        if file.suffix.lower() == ".pdf":
+        suffix = file.suffix.lower()
+        if suffix in UPLOAD_SUFFIXES:
             return ffa.documents.upload(file)
+        if suffix in (".html", ".htm"):
+            return ffa.documents.create(html=file.read_text("utf-8"), filename=file.stem)
         return ffa.documents.create(text=file.read_text("utf-8"), filename=file.stem)
     return ffa.documents.create(text=text or "Hello from an agent.", filename="agent")
 
@@ -57,7 +64,7 @@ def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     ap.add_argument("--to", default="+15550000001", help="E.164 destination (+15550000001 is delivered on the sandbox)")
     ap.add_argument("--text", help="plain text to render to a one page PDF")
-    ap.add_argument("--file", type=Path, help="a .pdf or .txt to send instead of --text")
+    ap.add_argument("--file", type=Path, help="a .pdf, .png, .jpg, .tiff, .html or .txt to send instead of --text")
     ap.add_argument("--cover-subject", help="adds a cover page, which is billable")
     ap.add_argument("--approval-wait", type=float, default=600.0, help="seconds to wait for a person")
     args = ap.parse_args()

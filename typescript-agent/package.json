@@ -9,7 +9,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "faxforagents": "^0.1.0"
+    "faxforagents": "github:faxforagents/sdk-typescript"
   },
   "devDependencies": {
     "@types/node": "^26.4.0",

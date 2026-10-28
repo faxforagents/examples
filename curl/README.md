@@ -18,9 +18,11 @@ The five calls, each one line of `curl`.
 | 4 | `GET /v1/faxes/{id}` until `delivered`, `partial`, `failed` or `unknown` | |
 | 5 | `GET /v1/faxes/{id}/receipt` | |
 
-A PDF instead of text takes three more calls: `POST /v1/uploads`, a `PUT` of the bytes to the signed
+`{"markdown": ...}` or `{"html": ...}` instead of `{"text": ...}` renders on the server the same way.
+A file instead of text takes three more calls: `POST /v1/uploads` with its `content_type`
+(`application/pdf`, `image/png`, `image/jpeg` or `image/tiff`), a `PUT` of the bytes to the signed
 `upload_url`, `POST /v1/uploads/{id}/complete` with the sha256, then `POST /v1/documents` with
-`{"upload_id"}`.
+`{"upload_id"}`. An image becomes gray letter pages.
 
 Every error is one envelope, `{"error": {"code", "message", "retryable", "correlation_id"}}`. The
 script exits 0 only for `delivered` with evidence. The full contract is the
