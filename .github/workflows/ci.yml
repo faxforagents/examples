@@ -24,7 +24,8 @@ jobs:
       - run: sh scripts/truthcheck.sh
       - name: Python agent compiles and lints
         run: |
-          pip install ruff faxforagents
+          # From the repository until the package is on PyPI; then plain `pip install faxforagents`.
+          pip install ruff "faxforagents @ git+https://github.com/faxforagents/sdk-python@main"
           python -m py_compile python-agent/agent.py
           ruff check python-agent
       - name: Shell scripts parse
@@ -56,7 +57,7 @@ jobs:
         run: echo "FAXFORAGENTS_TEST_KEY is not configured, skipping"
       - name: Python agent
         if: env.FAXFORAGENTS_API_KEY != ''
-        run: pip install faxforagents && python python-agent/agent.py --to +15550000001 --text "CI run"
+        run: pip install "faxforagents @ git+https://github.com/faxforagents/sdk-python@main" && python python-agent/agent.py --to +15550000001 --text "CI run"
       - name: curl flow
         if: env.FAXFORAGENTS_API_KEY != ''
         run: sh curl/flow.sh +15550000001
