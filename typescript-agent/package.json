@@ -1,0 +1,20 @@
+{
+  "name": "faxforagents-example-typescript-agent",
+  "version": "0.1.0",
+  "private": true,
+  "description": "An agent loop that faxes a document on the Fax for Agents sandbox with the TypeScript SDK.",
+  "type": "module",
+  "scripts": {
+    "start": "tsx agent.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "faxforagents": "^0.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.4.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.5.0"
+  },
+  "license": "MIT"
+}

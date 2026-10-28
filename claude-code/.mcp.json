@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "faxforagents": {
+      "type": "http",
+      "url": "https://mcp.faxforagents.com/mcp/",
+      "headers": {
+        "Authorization": "Bearer ${FAXFORAGENTS_API_KEY}"
+      }
+    }
+  }
+}
