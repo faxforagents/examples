@@ -3,7 +3,7 @@
 Runnable examples against the sandbox of Fax for Agents, <https://faxforagents.com>.
 
 Fax for Agents is a fax API, a hosted MCP server and SDKs built so AI agents can send and receive
-faxes. It is made by JSB Holdings LLC.
+faxes. It is made by JSB Holdings LLC and built by [Synapse](https://synapsereality.io/).
 
 Every example needs a test key (`ffa_test_...`), created at <https://app.faxforagents.com>, in
 `FAXFORAGENTS_API_KEY`. A test API key reaches the sandbox only. No carrier, no cost, the destination
