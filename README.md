@@ -1,10 +1,31 @@
-# Fax for Agents examples
+<p align="center">
+  <a href="https://faxforagents.com"><img src="https://faxforagents.com/brand/logo-512.png" width="88" alt="Fax for Agents"></a>
+</p>
 
-Runnable examples against the sandbox of Fax for Agents, <https://faxforagents.com>.
+<h1 align="center">Fax for Agents examples</h1>
+
+<p align="center">Runnable examples against the sandbox of <a href="https://faxforagents.com">Fax for Agents</a>, the fax API built for AI agents.</p>
+
+<p align="center">
+  <a href="https://faxforagents.com">Website</a> ·
+  <a href="https://faxforagents.com/docs/quickstart/">Quickstart</a> ·
+  <a href="https://faxforagents.com/docs/api/">API reference</a> ·
+  <a href="https://faxforagents.com/docs/sdks/">SDKs</a> ·
+  <a href="https://faxforagents.com/mcp/">MCP</a> ·
+  <a href="https://app.faxforagents.com">Dashboard</a> ·
+  <a href="https://faxforagents.com/pricing/">Pricing</a> ·
+  <a href="https://faxforagents.com/changelog/">Changelog</a> ·
+  <a href="https://gitlab.com/faxforagents/examples">GitLab</a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/faxforagents/examples/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/faxforagents/examples/ci.yml?branch=main&label=ci" alt="CI"></a>
+  <a href="https://github.com/faxforagents/examples/blob/main/LICENSE"><img src="https://img.shields.io/badge/licence-MIT-1f6feb" alt="MIT licence"></a>
+  <a href="https://faxforagents.com/docs/sandbox/"><img src="https://img.shields.io/badge/sandbox-no%20cost-2ea043" alt="Sandbox, no cost"></a>
+</p>
 
 Fax for Agents is a fax API, a hosted MCP server and SDKs built so AI agents can send and receive
 faxes. It is made by JSB Holdings LLC and built by [Synapse](https://synapsereality.io/).
-The repository is mirrored on [GitLab](https://gitlab.com/faxforagents/examples).
 
 Every example needs a test key (`ffa_test_...`), created at <https://app.faxforagents.com>, in
 `FAXFORAGENTS_API_KEY`. A test API key reaches the sandbox only. No carrier, no cost, the destination
